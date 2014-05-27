@@ -1,0 +1,44 @@
+{
+  "name": "SuperWedding",
+  "version": "0.0.1",
+  "description": "A wedding helper solution based on Wechat platform.",
+  "main": "app.js",
+  "scripts": {
+    "test": "make install && make test"
+  },
+  "dependencies": {
+    "co": "3.0.6",
+    "koa": "0.6.1",
+    "ms": "0.6.2",
+    "mysql": "2.3.0"
+  },
+  "devDependencies": {
+    "co-mocha": "0.0.2",
+    "cov": "*",
+    "istanbul-harmony": "*",
+    "mm": "0.2.1",
+    "mocha": "*",
+    "pedding": "0.0.3",
+    "should": "3.3.2",
+    "supertest": "0.13.0"
+  },
+  "homepage": "https://github.com/rockdai/SuperWedding",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rockdai/SuperWedding.git",
+    "web": "https://github.com/rockdai/SuperWedding"
+  },
+  "bugs": {
+    "url": "https://github.com/rockdai/SuperWedding/issues",
+    "email": "rockdai321@gmail.com"
+  },
+  "keywords": [
+    "wedding",
+    "wechat",
+    "weixin"
+  ],
+  "engines": {
+    "node": ">= 0.11.9"
+  },
+  "license": "MIT"
+}
