@@ -22,7 +22,7 @@ var root = path.dirname(__dirname);
 var config = {
   version: version,
   port: 7001,
-  // bindingHost: '127.0.0.1', // 不知道干嘛的, 似乎有用. 以后再研究.
+  bindingHost: '127.0.0.1',
   enableCluster: false,
   numCPUs: os.cpus().length,
   debug: true,
