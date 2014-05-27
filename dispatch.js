@@ -10,13 +10,12 @@
 
 var path = require('path');
 var util = require('util');
-var cluster = require('cluster');
 var config = require('./config');
 var workerPath = path.join(__dirname, 'worker.js');
-var childProcess = require('child_process');
-var syncPath = path.join(__dirname, 'sync');
 
 if (config.enableCluster) {
+  var cluster = require('cluster');
+
   cluster.setupMaster({
     exec: workerPath
   });
@@ -44,8 +43,6 @@ if (config.enableCluster) {
     cluster.fork();
   }
 
-  childProcess.fork(syncPath);
 } else {
   require(workerPath);
-  require(syncPath);
 }
