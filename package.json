@@ -7,25 +7,30 @@
     "test": "make install && make test"
   },
   "dependencies": {
-    "co": "3.0.6",
-    "koa": "0.6.1",
+    "connect": "2.19.3",
+    "connect-render": "0.4.1",
+    "eventproxy": "0.3.1",
+    "response-send": "0.0.1",
+    "response-patch": "0.1.1",
+    "urlrouter": "0.5.4",
     "ms": "0.6.2",
     "mysql": "2.3.0",
     "copy-to": "1.0.1",
     "mkdirp": "0.5.0",
     "graceful": "0.0.6",
     "logfilestream": "0.1.0",
-    "moment": "2.6.0"
+    "moment": "2.6.0",
+    "formidable": "1.0.14",
+    "utility": "0.1.13",
+    "exif": "0.4.0",
+    "qn": "0.2.2"
   },
   "devDependencies": {
-    "co-mocha": "0.0.2",
-    "cov": "*",
-    "istanbul-harmony": "*",
-    "mm": "0.2.1",
     "mocha": "*",
-    "pedding": "0.0.3",
-    "should": "3.3.2",
-    "supertest": "0.13.0"
+    "mm": "*",
+    "pedding": "*",
+    "should": "*",
+    "supertest": "*"
   },
   "homepage": "https://github.com/rockdai/SuperWedding",
   "repository": {
@@ -43,7 +48,7 @@
     "weixin"
   ],
   "engines": {
-    "node": ">= 0.11.9"
+    "node": ">= 0.10.20"
   },
   "license": "MIT"
 }

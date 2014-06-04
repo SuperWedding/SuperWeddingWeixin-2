@@ -22,7 +22,7 @@ var root = path.dirname(__dirname);
 var config = {
   version: version,
   port: 7001,
-  bindingHost: '127.0.0.1',
+  // bindingHost: '127.0.0.1',
   enableCluster: false,
   numCPUs: os.cpus().length,
   debug: true,
@@ -50,13 +50,12 @@ var config = {
     // prefix: 'sw_dev:'
   },
   jsonLimit: '10mb', // max request json body size
-  uploadDir: path.join(root, '.dist'),
-  // qiniu cdn: http://www.qiniu.com/, it free for dev.
+  uploadDir: path.join(root, '.upload'),
   qn: {
-    accessKey: '',
-    secretKey: '',
-    bucket: 'testbucket',
-    domain: ''
+    accessKey: 'lTcPDs5KvSr4xZWTLROEapmAlkD70xYvAm0LGGVD',
+    secretKey: 'iwzTpCM-Fr0_x2NflYfjNmFu6rccJjyBwypcAtU6',
+    bucket: 'swtest',
+    domain: 'swtest.qiniudn.com'
   }
 };
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Demo</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #333333;
+      font-size: 18px;
+      background-color: #E0E0E0;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      color: inherit;
+      text-rendering: optimizelegibility;
+    }
+    a {
+      color: #303030;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #303030;
+      text-decoration: underline;
+    }
+    .header {
+      width: 100%;
+      height: 124px;
+      background-color: #303030;
+      color: #707070;
+      text-align: center;
+    }
+    .header h1.title {
+      font-size: 86px;
+      font-weight: normal;
+    }
+    .container {
+      margin: 100px 40px;
+    }
+    .container .rows {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1 class="title">Demo</h1>
+  </div>
+
+  <div class="container">
+    <div class="formbox">
+      <form action="/api/upload" method="post" enctype="multipart/form-data">
+        <div class="rows">
+          <input type="file" name="upload" id="upload" accept="image/*" />
+        </div>
+        <div class="rows">
+          <input type="submit" name="submit" value="上传图片" />
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
