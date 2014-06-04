@@ -66,6 +66,8 @@ exports.upload = function (req, res, next) {
     randName = [utility.YYYYMMDD(), randName].join('/');
     qnClient.uploadFile(filePath, {key: randName}, ep.doneLater('qn'));
     ep.all('exif', 'qn', function (exifData, qnResult) {
+      fs.unlink(filePath, utility.noop);
+      // TODO: Insert a record to MySQL.
       ret.image = {url: qnResult.url};
       ret.gps = exifData.gps || {};
       res.statusCode = 200;
