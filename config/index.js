@@ -22,33 +22,13 @@ var root = path.dirname(__dirname);
 var config = {
   version: version,
   port: 7001,
-  // bindingHost: '127.0.0.1',
+  serverHost: 'http://wedding2.keydiary.net',
   enableCluster: false,
   numCPUs: os.cpus().length,
   debug: true,
   logdir: path.join(root, '.tmp', 'logs'),
   viewCache: false,
-  // mysql config
-  mysqlServers: [
-    {
-      host: '58.100.85.65',
-      port: 3306,
-      user: 'root',
-      password: ''
-    }
-  ],
-  mysqlDatabase: 'sw_test',
-  mysqlMaxConnections: 4,
-  mysqlQueryTimeout: 5000,
 
-  sessionSecret: 'SuperWedding test session secret',
-  redis: {
-    // host: '58.100.85.65',
-    // port: 6379,
-    // pass: 'sw_dev',
-    // speedFirst: true,
-    // prefix: 'sw_dev:'
-  },
   jsonLimit: '10mb', // max request json body size
   uploadDir: path.join(root, '.upload'),
   qn: {
