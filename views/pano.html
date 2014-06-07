@@ -1,0 +1,33 @@
+<%- partial('common/header') %>
+<style type="text/css">
+  #pano-container {
+    width: 100%;
+    height: 100%;
+  }
+  .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+</style>
+<body>
+  <div class="container">
+    <div class="pano" id="pano-container"></div>
+    <script>
+      Zepto(function ($) {
+        pano = new qq.maps.Panorama(document.getElementById('pano-container'), {
+          pano: '10091012130303085223300',
+          pov: {
+            heading: 2,
+            pitch: 0
+          }
+        });
+      });
+    </script>
+  </div>
+</body>
+<%- partial('common/footer') %>

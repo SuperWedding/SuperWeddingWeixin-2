@@ -13,7 +13,7 @@ var weixin = require('./controllers/weixin');
 
 module.exports = function (app) {
 
-  app.get('/pages/upload', pages.upload);
+  app.get('/pages/:page', pages.dispatch);
 
   app.post('/api/upload', api.upload);
   app.all('/weixin', weixin.dispatch);
