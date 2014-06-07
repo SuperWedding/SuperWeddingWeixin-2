@@ -24,8 +24,9 @@ build/Release
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules
 
-.dist
+.upload
 .tmp
+.DS_Store
 
 # Custom config file
 config/config.js

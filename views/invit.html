@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>周宁奕*余晓瑞</title>
+    <link href="/assets/css/invit.css" rel="stylesheet">
+</head>
+
+<body>
+<script>
+    var QINIU_DOMAIN = 'http://yeshou.qiniudn.com';
+</script>
+<div id="Infomation">
+<!--     <div id="banner"></div>
+    <div id="article"></div>
+ -->    <div id='tel' class="telSmall mainBotton"><a href="tel:18357138841">联系18357138841</a></div>
+    <div id="map" class="mapSmall mainBotton">上海交大闵行校区（东川路）</div>
+    <div id="pano" class="panoSmall mainBotton">留园餐厅2楼</div>
+    </div>
+<div id="add">
+    <div id="text"></div>
+    <div id="pass">跳过-></div>
+</div>
+<div id="broadcast">
+    <div id="male" class="people"></div>
+    <div id="female" class="people"></div>
+</div>
+
+    <script src="http://cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/underscore.js/1.6.0/underscore-min.js"></script>
+    <script src="http://yeshou.qiniudn.com/color.js"></script>
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=GCQBZ-KJJRJ-QN6FV-KGXFK-YN7AF-GSFVN"></script>
+
+    <script src="/assets/js/Animation.js"></script>
+    <script src="/assets/js/Map.js"></script>
+    <script src="/assets/js/Information.js"></script>
+    <script src="/assets/js/Controller.js"></script>
+
+    <script>
+    $('#text').css('lineHeight', $('#broadcast').height()*0.8 + 'pt');
+    $('#tel').css('lineHeight', $('#tel').height() + 'px');
+    $('#pass').css('lineHeight', $('#pass').height() + 'px');
+    $('#pano').css('lineHeight', $('#pano').height() + 'px');
+    $('#map').css('lineHeight', $('#map').height() + 'px');
+    var articles = '2014年6月21日中午，周宁奕和余晓瑞在上海交大闵行校区结婚，我们恭候您的见证';
+    $('#article').text(articles);
+
+
+
+    var animation = new Animation();
+    var controller = new Controller();
+    var information = new Information();
+    // animation.broadcastOut();
+
+    </script>
+    <audio src="http://yeshou.qiniudn.com/hongzhu.mp3" autoPlay="autoPlay" loop="loop"></audio>>
+</body>
+
+</html>

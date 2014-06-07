@@ -1,0 +1,268 @@
+    a {
+        text-align: center;
+        position：absolute;
+        width: 80%;
+        height: 80%;
+        text-decoration:none;
+        color:rgba(255,255,255,0.8);
+        font-size: 40pt;
+    }
+    a:link {
+        color: rgba(255,255,255,0.8);
+        text-decoration: none
+    }
+    a:visited {
+        color: rgba(255,255,255,0.8);
+        text-decoration: none
+    }
+    a:hover {
+        color: rgba(255,255,255,0.8);
+        text-decoration: none
+    }
+    body {
+        font-family: Microsoft YaHei, 'Lato', Calibri, Arial, sans-serif;
+        ;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top:0px;
+    }
+    #add {
+        position: absolute;
+        top:0px;
+        left:0px;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0);
+        overflow: hidden;
+    }
+    #Infomation {
+        position: absolute;
+        top:0px;
+        left:0px;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: rgba(180, 0, 0, 1);
+        background-image: url('http://yeshou.qiniudn.com/bg.jpg');
+        background-size: 100% 100%;
+    }
+    #add {
+      -webkit-transition: all 2s ease-in-out;
+        background-size: 100% auto;
+        position: absolute;
+        top:0%;
+        left:0px;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 1);
+        overflow: hidden;
+        overflow: hidden;
+        pointer-events:auto;
+    }
+    #broadcast {
+       -webkit-transition: all 1s ease-in-out;
+        position: absolute;
+        background-origin: 0px 0px;
+        background-size: 100% 100%;
+        top:0%;
+        left:0px;
+        width: 100%;
+        height: 80%;
+        overflow: hidden;
+        visibility: visible;
+    }
+
+    #pass{
+        position: absolute;
+        text-align: center;
+        top:85%;
+        left: 30%;
+        width: 40%;
+        height: 8%;
+        background:rgba(0,150,180,0.6);
+        font-size: 40px;
+        color: #fff;
+        border-radius: 5px;
+        border: #ff0 1px;
+        cursor: pointer;
+    }
+
+
+    .broadcastOut {
+        -webkit-animation: animationOut1 2s linear forwards;
+    }
+    .addOut {
+        -webkit-animation: animationOut1 4s linear forwards;
+    }
+
+    .broadcastOutSpeed {
+        -webkit-animation: animationOut1 0.3s linear forwards;
+    }
+    .addOutSpeed {
+        -webkit-animation: animationOut1 0.6s linear forwards;
+    }
+    #text{
+        text-align: center;
+        font-weight: bold;
+        color:#099;
+        font-size: 250pt;
+    }
+    .people {
+        background-origin: 0pt 0pt;
+        background-size: 100% 100%;
+        position: relative;
+        width: 50%;
+        height: 100%;
+        float: left;
+        opacity: 0;
+        pointer-events:none;
+    }
+    .people2 {
+        background-origin: 0pt 0pt;
+        background-size: 100% 100%;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        float: left;
+        opacity: 0;
+        pointer-events:none;
+    }
+
+    .in {
+        -webkit-animation: animationIn 0.5s linear forwards;
+    }
+    .out {
+        -webkit-animation: animationOut 0.5s linear forwards;
+    }
+
+    @-webkit-keyframes animationOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes animationOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    @-webkit-keyframes animationIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes animationIn1 {
+        0% {
+            top: -80%;
+        }
+        100% {
+            top: 0;
+        }
+    }
+    @-webkit-keyframes animationOut1 {
+        0% {
+            top: 0%;
+        }
+        50% {
+            top: 0%;
+        }
+        100% {
+            top: -100%;
+        }
+    }
+
+
+    @-webkit-keyframes animationExpand {
+        0% {
+        }
+        100% {
+            top: 0%;
+            left: 100%;
+            width:100%;
+            height: 100%;
+        }
+    }
+    .mainBotton{
+      position:relative;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 40pt;
+      height: 10%;
+      left: 5%;
+      width: 90%;
+      color: #fff;
+      border-radius: 4pt;
+      cursor: pointer;
+      overflow: hidden;
+      margin: 4pt 1pt 1pt 1pt;
+    }
+/*    #banner{
+        position: absolute;
+        top:15%;
+        left: 10%;
+        width: 80%;
+        height: 30%;
+        background:rgba(50,50,50,0.4);
+    }*/
+
+    #tel{
+        background:rgba(255,10,0,0.7);
+    }
+    #map {
+        background:rgba(0,150,180,0.7);
+    }
+    #pano {
+       background:rgba(200,50,150,0.7);
+    }
+    @-webkit-keyframes animationBig {
+        0% {
+            height: 10%;
+        }
+        100% {
+            height: 60%;
+        }
+    }
+
+    @-webkit-keyframes animationShink {
+        0% {
+            height: 60%;
+        }
+        100% {
+            height: 10%;
+        }
+    }
+    .big{
+     -webkit-animation: animationBig 0.3s linear forwards;
+      height: 60%;
+    }
+    .fullScreen{
+      position: absolute;
+      top:0pt;
+      left: 0pt;
+      height:100%;
+      width: 100%;
+    }
+    .telSmall{
+        position: relative;
+        top:2pt;
+    }
+    .mapSmall{
+        background:rgba(0,150,180,0.7);
+        position: relative;
+        top:2pt;
+    }
+    .panoSmall{
+        background:rgba(200,50,150,0.7);
+        position: relative;
+        top:2pt;
+    }
