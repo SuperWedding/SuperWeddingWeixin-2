@@ -31,6 +31,19 @@ var config = {
 
   jsonLimit: '10mb', // max request json body size
   uploadDir: path.join(root, '.upload'),
+
+  mysqlServers: [
+    {
+      host: '127.0.0.1',
+      port: 3306,
+      user: 'root',
+      password: ''
+    }
+  ],
+  mysqlDatabase: 'sw_test',
+  mysqlMaxConnections: 4,
+  mysqlQueryTimeout: 5000,
+
   qn: {
     accessKey: 'lTcPDs5KvSr4xZWTLROEapmAlkD70xYvAm0LGGVD',
     secretKey: 'iwzTpCM-Fr0_x2NflYfjNmFu6rccJjyBwypcAtU6',
