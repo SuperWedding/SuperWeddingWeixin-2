@@ -37,6 +37,9 @@ exports.upload = function (req, res, next) {
   var form = new formidable.IncomingForm();
   var ret = {};
 
+  form.uploadDir = config.uploadDir;
+  form.maxFieldsSize = 8 * 1024 * 1024;
+
   // Parse uploaded file.
   form.parse(req, function (err, fields, files) {
     if (err) {

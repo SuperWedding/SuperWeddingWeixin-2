@@ -26,3 +26,6 @@ node_modules
 
 .dist
 .tmp
+
+# Custom config file
+config/config.js

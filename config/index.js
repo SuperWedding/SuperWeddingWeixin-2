@@ -56,6 +56,9 @@ var config = {
     secretKey: 'iwzTpCM-Fr0_x2NflYfjNmFu6rccJjyBwypcAtU6',
     bucket: 'swtest',
     domain: 'swtest.qiniudn.com'
+  },
+  weixin: {
+    token: ''
   }
 };
 
