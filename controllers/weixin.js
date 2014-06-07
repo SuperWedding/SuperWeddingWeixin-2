@@ -17,7 +17,7 @@ function sendGreeting(res) {
     title: '周宁奕&余晓瑞婚礼进行时',
     description: '点击查看详情',
     picurl: 'http://swtest.qiniudn.com/getimgdata.jpeg',
-    url: config.serverHost + '/pages/upload'
+    url: config.serverHost + '/pages/index'
   }]);
 }
 
