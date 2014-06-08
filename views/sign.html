@@ -26,6 +26,7 @@
     </form>
 
   </div>
+
 </body>
 <%- partial('common/hook') %>
 <script>
@@ -69,16 +70,16 @@
         },
         dataType: 'json',
         timeout: 5000,
-        statusCode: {
-          400: function () {
+        error: function (err) {
+          err = err || {};
+          var statusCode = err.status;
+          if (statusCode === 400) {
             alert('请求的参数不合法. 请帮忙将这个情况告诉开发者.');
-          },
-          404: function () {
+          } else if (statusCode === 404) {
             alert('请求的地址不存在. 请帮忙将这个情况告诉开发者.');
+          } else {
+            alert('不好意思, 貌似出错了. 请帮忙将这个情况告诉开发者.');
           }
-        },
-        error: function () {
-          alert('不好意思, 貌似出错了. 请帮忙将这个情况告诉开发者.');
         },
         success: function (res) {
           alert('提交成功!');
