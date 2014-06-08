@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>周宁奕*余晓瑞</title>
+    <title>周宁奕 ❤ 余晓瑞</title>
     <link href="/assets/css/invit.css" rel="stylesheet">
 </head>
 
@@ -12,11 +12,11 @@
     var QINIU_DOMAIN = 'http://yeshou.qiniudn.com';
 </script>
 <div id="Infomation">
-<!--     <div id="banner"></div>
-    <div id="article"></div>
- -->    <div id='tel' class="telSmall mainBotton"><a href="tel:18357138841">联系18357138841</a></div>
+    <div id="time" class="timeSmall mainBotton">333333</div>
+    <div id="main" class="mainSmall mainBotton">333333</div>
     <div id="map" class="mapSmall mainBotton">上海交大闵行校区（东川路）</div>
     <div id="pano" class="panoSmall mainBotton">留园餐厅2楼</div>
+    <div id='tel' class="telSmall mainBotton"><a href="tel:18357138841">请联系:周宁奕-18357138841</a></div>
     </div>
 <div id="add">
     <div id="text"></div>
@@ -39,6 +39,8 @@
 
     <script>
     $('#text').css('lineHeight', $('#broadcast').height()*0.8 + 'pt');
+    $('#time').css('lineHeight', $('#time').height() + 'px');
+    $('#main').css('lineHeight', $('#main').height() + 'px');
     $('#tel').css('lineHeight', $('#tel').height() + 'px');
     $('#pass').css('lineHeight', $('#pass').height() + 'px');
     $('#pano').css('lineHeight', $('#pano').height() + 'px');
@@ -48,13 +50,13 @@
 
 
 
-    var animation = new Animation();
+    var animation = new Animation($('#broadcast'));
     var controller = new Controller();
     var information = new Information();
     // animation.broadcastOut();
 
     </script>
-    <audio src="http://yeshou.qiniudn.com/hongzhu.mp3" autoPlay="autoPlay" loop="loop"></audio>>
+    <audio src="http://open-wedding.qiniudn.com/pnghongzhu.mp3" autoPlay="autoPlay" loop="loop"></audio>
 </body>
 <%- partial('common/hook') %>
 </html>
