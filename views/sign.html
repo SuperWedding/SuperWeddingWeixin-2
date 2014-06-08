@@ -1,10 +1,98 @@
 <%- partial('common/header') %>
 <body>
+  <style type="text/css">
+    #sign-form input.name {
+      font-size: 18px;
+    }
+    #greeting {
+      display: none;
+    }
+  </style>
   <div class="header">
-    <h1 class="title">签到</h1>
+    <h1 class="title">署名</h1>
   </div>
 
   <div class="container">
+    <div id="greeting">
+      hi, <span class="name"></span>!<br />
+    </div>
+    <form id="sign-form" action="/api/sign" method="post">
+      <div class="rows">
+        <input type="text" name="name" class="name" placeholder="请告诉我们您的大名" />
+      </div>
+      <div class="rows">
+        <a class="btn submit" />提交</a>
+      </div>
+    </form>
+
   </div>
 </body>
+<%- partial('common/hook') %>
+<script>
+  Zepto(function ($) {
+    var greetingNode = $('#greeting');
+    var signForm = $('#sign-form');
+
+    // 检查是否已经提交过了
+    if (OPENID) {
+      $.get('/api/user', {openId: OPENID}, function (res) {
+        res = res || {};
+        var name = res.name || '';
+        if (name) {
+          signForm.hide();
+          greetingNode.find('.name').html(name);
+          greetingNode.show();
+        }
+      }, 'json');
+    }
+
+    // 处理表单提交
+    var nameInput = signForm.find('.name');
+    var submitBtn = signForm.find('.submit')
+    var postUrl = signForm.attr('action');
+    submitBtn.on('click', function (evt) {
+      var name = nameInput.val();
+      if (!name || name.length <= 1) {
+        alert('请告诉我们您的大名');
+        return false;
+      }
+      if (!confirm('请确认姓名为: ' + name + ' 无误?')) {
+        return false;
+      }
+      $.ajax({
+        url: postUrl,
+        type: 'POST',
+        cache: false,
+        data: {
+          name: name,
+          openId: OPENID || ''
+        },
+        dataType: 'json',
+        timeout: 5000,
+        statusCode: {
+          400: function () {
+            alert('请求的参数不合法. 请帮忙将这个情况告诉开发者.');
+          },
+          404: function () {
+            alert('请求的地址不存在. 请帮忙将这个情况告诉开发者.');
+          }
+        },
+        error: function () {
+          alert('不好意思, 貌似出错了. 请帮忙将这个情况告诉开发者.');
+        },
+        success: function (res) {
+          alert('提交成功!');
+          var name = res.name || '';
+          if (name) {
+            signForm.hide();
+            greetingNode.find('.name').html(name);
+            greetingNode.show();
+          }
+        }
+      });
+      return false;
+    });
+  });
+</script>
 <%- partial('common/footer') %>
+

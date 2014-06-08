@@ -1,0 +1,19 @@
+<script>
+  var OPENID = '<%- openId %>';
+  var NAME = '';
+  // 给每个超链接都带上OpenId
+  Zepto(function ($) {
+    if (OPENID) {
+      $('a').forEach(function (item) {
+        item = $(item);
+        var link = item.attr('href');
+        if (link.indexOf('?') < 0) {
+          link = link + '?openId=' + OPENID;
+        } else {
+          link = link + '&openId=' + OPENID;
+        }
+        item.attr('href', link);
+      });
+    }
+  });
+</script>

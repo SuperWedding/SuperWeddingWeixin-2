@@ -60,6 +60,7 @@ app.use(function (err, req, res, next) {
   err.url = err.url || req.url;
   console.log(err.stack);
   logger.error(err);
+  res.statusCode = 500;
   res.end();
 });
 

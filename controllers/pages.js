@@ -24,11 +24,14 @@ fs.readdirSync(viewDir).forEach(function (file) {
 
 exports.dispatch = function (req, res, next) {
   var params = req.params || {};
+  var query = req.query || {};
   var page = params.page || '';
+  var openId = query.openId || '';
   if (pagesList[page]) {
     return res.render(page, {
       viewname: page,
-      current: new Date()
+      current: new Date(),
+      openId: openId
     });
   }
   next();

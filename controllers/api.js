@@ -15,6 +15,7 @@ var eventproxy = require('eventproxy');
 var qn = require('qn');
 var exif = require('exif').ExifImage;
 var config = require('../config');
+var user = require('../proxy/user');
 
 var qnClient = qn.create(config.qn);
 
@@ -78,3 +79,40 @@ exports.upload = function (req, res, next) {
     });
   });
 };
+
+exports.sign = function (req, res, next) {
+  var query = req.body || {};
+  var name = query.name || '';
+  var openId = query.openId || '';
+  if (!name || !openId) {
+    return badRequest(res);
+  }
+  user.add(openId, name, function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.statusCode = 200;
+    return res.json({name: name, openId: openId});
+  });
+};
+
+exports.userInfo = function (req, res, next) {
+  var query = req.query || {};
+  var openId = query.openId || '';
+  if (!openId) {
+    return badRequest(res);
+  }
+  user.getByOpenId(openId, function (err, row) {
+    if (err) {
+      return next(err);
+    }
+    row = row || {};
+    if (!row.name) {
+      res.statusCode = 404;
+      return res.end();
+    }
+    res.statusCode = 200;
+    return res.json(row);
+  });
+};
+
