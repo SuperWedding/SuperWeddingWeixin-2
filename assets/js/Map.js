@@ -1,7 +1,7 @@
 !(function(exports){
   function Map(container){
     this.container = $(container);
-
+    
     this.map();
     this.polyline();
     this.makers();
@@ -9,20 +9,119 @@
   }
 
   Map.prototype.map = function(){
-    var map = this.mapObj = new qq.maps.Map(this.container[0], {
+    var mapDiv = this.mapDiv = $('<div></div>')
+      .css('background','rgba(255,0,0,0.6)')
+      .css('width','100%')
+      .css('height','100%')
+      .css('zIndex',2);
+      this.container.append(mapDiv);
+    var map = this.mapObj = new qq.maps.Map(this.mapDiv[0], {
         center: new qq.maps.LatLng(31.0259,121.4326),
         zoom:15
     }) 
   };
 
-  Map.prototype.searches = function(){
-    var input = this.searches = 
-    $('<input></input>')
-    .css('zIndex',10000)
-    .attr('type','textbox')
-    .attr('value','上海交通大学闵行校区');
-    this.container.append(input);
-  }
+    Map.prototype.searches = function() {
+        var self = this;
+        //  var input = this.input = 
+        //  $('<input></input>')
+        //  .css('zIndex',100)
+        //  .css('position','absolute')
+        //  .css("width",'80%')
+        //  .css("top",'0%')
+        //  .css("left",'0%')
+        //  .css('height','10%')
+        //  .css('background','#fff')
+        //  .attr('type','textbox')
+        //  .css('fontSize','40pt')
+        //  .attr('value','上海交通大学闵行校区');
+        //  this.container.append(input);
+
+        var inputH = this.container.height() * 0.1;
+
+        var searchBotton = this.searchBotton =
+            $('<div></div>')
+            .css('position', 'absolute')
+            .css('zIndex', 100)
+            .css("top", '0%')
+            .css("left",'0%')
+            .css('height', inputH + 'px')
+            .css('lineHeight', inputH + 'px')
+            .css('width', '33.3%')
+            .css('background', '#f99')
+            .css('fontSize', '40pt')
+            .css('float', 'left')
+            .text('酒店位置');
+        this.container.append(searchBotton);
+        searchBotton.click(function() {
+            self.mapObj
+                .setCenter(new qq.maps.LatLng(31.0259, 121.4326))
+                .setZoom(15);
+        });
+
+        var driveBotton = this.driveBotton =
+            $('<div></div>')
+            .css('position', 'absolute')
+            .css('zIndex', 100)
+            .css("top", '0%')
+            .css("left", '33.333%')
+            .css('height', inputH + 'px')
+            .css('lineHeight', inputH + 'px')
+            .css('width', '33.3%')
+            .css('background', '#099')
+            .css('fontSize', '40pt')
+            .css('float', 'left')
+            .text('公交路线todo');
+
+        this.container.append(driveBotton);
+        driveBotton.click(function() {});
+
+        var busBotton = this.busBotton =
+            $('<div></div>')
+            .css('position', 'absolute')
+            .css('zIndex', 100)
+            .css("top", '0%')
+            .css("left", '66.666%')
+            .css('height', inputH + 'px')
+            .css('lineHeight', inputH + 'px')
+            .css('width', '33.3%')
+            .css('background', '#f30')
+            .css('fontSize', '40pt')
+            .css('float', 'left')
+            .text('驾车路线todo');
+        this.container.append(busBotton);
+        busBotton.click(function() {
+            // var center = new qq.maps.LatLng(39.916527,116.397128);
+            // map = new qq.maps.Map(document.getElementById('container'),{
+            //     center: center,
+            //     zoom: 13
+            // });
+            var gps = navigator.geolocation;
+            if (gps) {
+                gps.getCurrentPosition(function(position) {
+                    console.log(position)
+                    // if(position){
+                    //         var latitude = position.coords.latitude;
+                    //         var longitude = position.coords.longitude;
+                    //         console.log(latitude,longitude)        
+                    // }
+                })
+            }
+
+
+            citylocation = new qq.maps.CityService({
+                complete: function(result) {
+                    self.mapObj.setCenter(result.detail.latLng);
+                }
+            });
+            citylocation.searchLocalCity();
+        });
+    }
+
+ Map.prototype.updateLocation = function(){
+    // this.myLnglat = ;
+ }
+
 
   Map.prototype.polyline = function(){
     var latlngs = [
