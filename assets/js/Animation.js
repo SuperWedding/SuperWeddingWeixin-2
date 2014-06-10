@@ -133,6 +133,7 @@
           }
         };
       }
+     $('#Infomation').css('backgroundImage',"url('http://open-wedding.qiniudn.com/pngbg.jpg')");
     }
     Animation.prototype.clearLoading = function (){
       this.loadingGif.fadeOut();
@@ -211,8 +212,11 @@
     };
 
     Animation.prototype.clear = function(){
-       this.stop();
-        this.outs();
+      var self = this;
+      setTimeout(function(){       
+        self.stop();
+        self.outs();
+      },1000);
     }
 
     Animation.prototype.clearSpeed = function(){

@@ -21,13 +21,11 @@
     }
     body {
         font-family: Microsoft YaHei, 'Lato', Calibri, Arial, sans-serif;
-        ;
         width: 100%;
         height: 100%;
         left: 0px;
         top:0px;
     }
-
 
     #Infomation {
         position: absolute;
@@ -37,11 +35,10 @@
         height: 100%;
         overflow: hidden;
         background: rgba(180, 0, 0, 1);
-        background-image: url('http://open-wedding.qiniudn.com/pngbg.jpg');
         background-size: 100% 100%;
     }
     #add {
-      -webkit-transition: all 2s ease-in-out;
+        -webkit-transition: all 2s ease-in-out;
         background-size: 100% auto;
         position: absolute;
         top:0%;
@@ -104,10 +101,10 @@
     }
 
     .broadcastOutSpeed {
-        -webkit-animation: animationOut1 0.3s linear forwards;
+        -webkit-animation: animationOut1 0.2s linear forwards;
     }
     .addOutSpeed {
-        -webkit-animation: animationOut1 0.6s linear forwards;
+        -webkit-animation: animationOut1 0.4s linear forwards;
     }
     #text{
         text-align: center;
@@ -139,10 +136,10 @@
     }
 
     .in {
-        -webkit-animation: animationIn 0.5s linear forwards;
+        -webkit-animation: animationIn 0.8s linear forwards;
     }
     .out {
-        -webkit-animation: animationOut 0.5s linear forwards;
+        -webkit-animation: animationOut 0.8s linear forwards;
     }
 
     @-webkit-keyframes animationOut {
@@ -189,7 +186,6 @@
             top: -100%;
         }
     }
-
 
     @-webkit-keyframes animationExpand {
         0% {
