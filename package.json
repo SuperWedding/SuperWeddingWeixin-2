@@ -24,7 +24,8 @@
     "utility": "0.1.13",
     "exif": "0.4.0",
     "qn": "0.2.2",
-    "wechat": "0.6.8"
+    "wechat": "0.6.8",
+    "request": "2.36.0"
   },
   "devDependencies": {
     "mocha": "*",
