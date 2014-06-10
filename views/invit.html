@@ -3,20 +3,53 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>周宁奕*余晓瑞</title>
+    <title>周宁奕 ❤ 余晓瑞</title>
     <link href="/assets/css/invit.css" rel="stylesheet">
 </head>
 
 <body>
 <script>
+var imgUrl = 'http://open-wedding.qiniudn.com/pngbgtitle.jpg';
+var lineLink = 'http://wedding2.keydiary.net/pages/invit';
+var descContent = "6.21中午11点在闵行交大等待你们的见证";
+var shareTitle = '周宁奕 ❤ 余晓瑞';
+var appid = '';
+function shareFriend() {
+    WeixinJSBridge.invoke('sendAppMessage',{
+                            "appid": appid,
+                            "img_url": imgUrl,
+                            "img_width": "840",
+                            "img_height": "1840",
+                            "link": lineLink,
+                            "desc": descContent,
+                            "title": shareTitle
+                            }, function(res) {
+                            _report('send_msg', res.err_msg);
+                            })
+}
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                shareFriend();
+            });
+            // // 分享到朋友圈
+            // WeixinJSBridge.on('menu:share:timeline', function(argv){
+            //     shareTimeline();
+            // });
+            // // 分享到微博
+            // WeixinJSBridge.on('menu:share:weibo', function(argv){
+            //     shareWeibo();
+            // });
+        }, false);
     var QINIU_DOMAIN = 'http://yeshou.qiniudn.com';
 </script>
+</script>
 <div id="Infomation">
-<!--     <div id="banner"></div>
-    <div id="article"></div>
- -->    <div id='tel' class="telSmall mainBotton"><a href="tel:18357138841">联系18357138841</a></div>
+    <div id="time" class="timeSmall mainBotton">333333</div>
+    <div id="main" class="mainSmall mainBotton">333333</div>
     <div id="map" class="mapSmall mainBotton">上海交大闵行校区（东川路）</div>
     <div id="pano" class="panoSmall mainBotton">留园餐厅2楼</div>
+    <div id='tel' class="telSmall mainBotton"><a href="tel:18357138841">请联系:周宁奕-18357138841</a></div>
     </div>
 <div id="add">
     <div id="text"></div>
@@ -39,6 +72,8 @@
 
     <script>
     $('#text').css('lineHeight', $('#broadcast').height()*0.8 + 'pt');
+    $('#time').css('lineHeight', $('#time').height() + 'px');
+    $('#main').css('lineHeight', $('#main').height() + 'px');
     $('#tel').css('lineHeight', $('#tel').height() + 'px');
     $('#pass').css('lineHeight', $('#pass').height() + 'px');
     $('#pano').css('lineHeight', $('#pano').height() + 'px');
@@ -48,13 +83,23 @@
 
 
 
-    var animation = new Animation();
+    var animation = new Animation($('#broadcast'));
     var controller = new Controller();
     var information = new Information();
     // animation.broadcastOut();
 
     </script>
-    <audio src="http://yeshou.qiniudn.com/hongzhu.mp3" autoPlay="autoPlay" loop="loop"></audio>>
+    <script>
+        // var dataForWeixin={
+        //    appId:"",
+        //    MsgImg:"http://open-wedding.qiniudn.com/pngloading.gif",
+        //    TLImg:"http://open-wedding.qiniudn.com/pngloading.gif",
+        //    url: "http://open-wedding.qiniudn.com/pngloading.gif",
+        //    title:"怒放纹身社移动版",
+        //    desc:"欢迎大家点击",
+        // };
+    </script>
+    <audio src="http://open-wedding.qiniudn.com/pnghongzhu.mp3" autoPlay="autoPlay" loop="loop"></audio>
 </body>
 <%- partial('common/hook') %>
 </html>
