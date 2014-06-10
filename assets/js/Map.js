@@ -71,7 +71,7 @@
             .css('background', '#099')
             .css('fontSize', '40pt')
             .css('float', 'left')
-            .text('公交路线');
+            .text('公交路线todo');
 
         this.container.append(driveBotton);
         driveBotton.click(function() {});
@@ -88,7 +88,7 @@
             .css('background', '#f30')
             .css('fontSize', '40pt')
             .css('float', 'left')
-            .text('驾车路线');
+            .text('驾车路线todo');
         this.container.append(busBotton);
         busBotton.click(function() {
             // var center = new qq.maps.LatLng(39.916527,116.397128);
