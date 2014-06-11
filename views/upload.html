@@ -1,21 +1,61 @@
 <%- partial('common/header') %>
+<head>
+  <link rel="stylesheet" type="text/css" href="../assets/css/upload.css" />
+</head>
 <body>
   <div class="header">
-    <h1 class="title">图片上传 Demo</h1>
+    <h1 class="title">祝福图片上传</h1>
   </div>
 
   <div class="container">
-    <div class="formbox">
+    <section class="row wf-relevant-file">
+      <label>选择图片:</label>
       <form action="/api/upload" method="post" enctype="multipart/form-data">
-        <div class="rows">
-          <input type="file" name="upload" id="upload" accept="image/*" />
+        <div id="file-upload" class="clearfix">
+          <a id="file0" class="file-holder bg" data-order="0" href="javascript:void(0)">
+            <input class="file-geter" type="file" name="file0" id="upload1" accept="image/*" />
+          </a>
+          <!-- <a id="file1" class="file-holder bg" data-order="1" href="javascript:void(0)">
+            <input class="file-geter" type="file" name="file1" id="upload1" accept="image/*" />
+          </a>
+          <a id="file2" class="file-holder bg" data-order="2" href="javascript:void(0)">
+            <input class="file-geter" type="file" name="file2" id="upload1" accept="image/*" />
+          </a> -->
         </div>
+        <!-- <input type="hidden" name="_fmm.p._0.u" value="" id="f-relevant-file" /> -->
+        <div class="tip">
+          图片格式: <i>Jpg, Png, Gif, Tif, Bmp</i><br /><br />
+          图片大小: <i>小于4MB</i>
+        </div>
+
         <div class="rows">
           <input type="submit" name="submit" value="上传图片" />
         </div>
       </form>
-    </div>
+    </section>
   </div>
+
+  <script>
+    $(".file-geter").on("change", function () {
+      // var path = this.value;
+      var node  = "#" + this.name;
+      // Get a reference to the fileList
+      var files = !!this.files ? this.files : [];
+      // If no files were selected, or no FileReader support, return
+      if (!files.length || !window.FileReader) return;
+      // Only proceed if the selected file is an image
+      if (/^image/.test( files[0].type)){
+        // Create a new instance of the FileReader
+        var reader = new FileReader();
+        // Read the local file as a DataURL
+        reader.readAsDataURL(files[0]);
+        // When loaded, set image data as background of div
+        reader.onloadend = function(){
+          $(node).css("background-image", "url(" + this.result + ")");
+        }
+      }
+    });
+  </script>
 </body>
 <%- partial('common/hook') %>
 <%- partial('common/footer') %>

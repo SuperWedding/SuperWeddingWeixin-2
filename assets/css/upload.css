@@ -1,0 +1,65 @@
+section label {
+  display: block;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+  font-size: 14px;
+  font-weight: 700;
+  color: #535353;
+}
+
+form {
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.row.wf-relevant-file #file-upload {
+  width: 150px;
+  height: 160px;
+  padding-top: 4px;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.row.wf-relevant-file #file-upload a.bg {
+  border: none;
+  background-size: 150px 150px;
+  background-repeat: no-repeat;
+  background-image: url(http://yeshou.qiniudn.com/download.png);
+}
+.row.wf-relevant-file #file-upload a {
+  display: block;
+  width: 150px;
+  height: 150px;
+  /*margin-right: 8px;*/
+  text-align: center;
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+
+.row.wf-relevant-file #file-upload a input {
+  width: 150px;
+  height: 150px;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.tip {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  margin-top: 10px;
+  color: #999;
+  line-height: 100%;
+  font-family: Arial,Helvetica,sans-senif;
+  font-size: 75%;
+}
+
+form i {
+  color: orange;
+}
