@@ -10,7 +10,7 @@
 var wechat = require('wechat');
 var config = require('../config');
 var plug = {
-  image: require('../pulgins/weixin_img')
+  image: require('../plugins/weixin_img')
 };
 
 var token = config.weixin.token;
@@ -50,6 +50,11 @@ exports.dispatch = wechat(token)
     openId: openId,
     imageUrl: picUrl
   };
-  plug.image(params);
+  plug.image(params, function (err) {
+    if (err) {
+      return res.reply('哎呀, 好像出了点问题. 请再发一次.');
+    }
+    return res.reply('收到! 非常感谢!');
+  });
 })
 .middlewarify();

@@ -13,29 +13,33 @@ var request = require('request');
 var config = require('../config');
 var utils = require('../common/utils');
 var uploader = require('../common/uploader');
+var image = require('../proxy/image');
 
 module.exports = function (params, callback) {
   params = params || {};
   var imageUrl = params.imageUrl || '';
-  if (!imageUrl) {
+  var openId = params.openId || '';
+  if (!imageUrl || !openId) {
     return callback(null);
   }
 
-  var tempFileName = utils.getUniqFileName('temp_image');
+  var imageFileName = utils.getFileFromUrl(imageUrl);
+  var tempFileName = utils.getUniqFileName(imageFileName);
   var tempFilePath = path.join(config.uploadDir, tempFileName);
-  request(imageUrl).pipe(fs.createWriteStream(tempFilePath));
-  uploader(tempFilePath, 'temp_image', function (err, result) {
-    if (err) {
-      console.log('~~~~~~~~~~~~');
-      console.log(err);
-      return callback(err);
-    }
-    console.log(result);
+
+  var ws = fs.createWriteStream(tempFilePath);
+  request(imageUrl).pipe(ws);
+  ws.on('error', callback);
+  ws.on('finish', function () {
+    uploader(tempFilePath, imageFileName, function (err, result) {
+      result = result || {};
+      if (err || !result.image) {
+        var imageSavePath = imageUrl;
+        console.log(err.stack);
+      } else {
+        var imageSavePath = result.image.url;
+      }
+      image.add(openId, imageSavePath, callback);
+    });
   });
 };
-
-module.exports({
-  imageUrl: 'http://www.keydiary.com/assets/img/index.png'
-}, function (err, result) {
-  console.log(err, result);
-});

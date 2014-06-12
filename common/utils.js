@@ -19,3 +19,12 @@ exports.getUniqFileName = function (fileName) {
     return fileName + rand;
   }
 };
+
+exports.getFileFromUrl = function (url) {
+  if (!url) {
+    return false;
+  }
+  var fields = url.split('/');
+  var fileName = fields[fields.length - 1];
+  return fileName;
+};

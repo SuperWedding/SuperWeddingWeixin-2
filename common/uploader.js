@@ -9,9 +9,7 @@
  */
 var fs = require('fs');
 var utility = require('utility');
-var eventproxy = require('eventproxy');
 var qn = require('qn');
-var exif = require('exif').ExifImage;
 var config = require('../config');
 var utils = require('./utils');
 
@@ -21,27 +19,16 @@ module.exports = function (filePath, fileName, callback) {
 
   var result = {};
 
-  var ep = eventproxy.create();
-  ep.fail(callback);
-
-  // Read Exif metadata from this image.
-  try {
-    new exif({image: filePath}, function (err, res) {
-      console.log
-      // ep.doneLater('exif')
-    });
-  } catch (ex) {
-    return callback(ex);
-  }
   // Save to qiniu.
   var randName = utils.getUniqFileName(fileName);
   randName = [utility.YYYYMMDD(), randName].join('/');
-  qnClient.uploadFile(filePath, {key: randName}, ep.doneLater('qn'));
-
-  ep.all('exif', 'qn', function (exifData, qnResult) {
+  var args = {key: randName};
+  qnClient.uploadFile(filePath, args, function (err, res) {
+    if (err) {
+      return callback(err);
+    }
     fs.unlink(filePath, utility.noop);
-    result.image = {url: qnResult.url};
-    result.gps = exifData.gps || {};
+    result.image = {url: res.url};
     return callback(null, result);
   });
 };
