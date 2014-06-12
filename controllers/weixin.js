@@ -8,6 +8,7 @@
  * Module dependencies.
  */
 var wechat = require('wechat');
+var eventproxy = require('eventproxy');
 var config = require('../config');
 var plug = {
   image: require('../plugins/weixin_img')
@@ -56,7 +57,7 @@ exports.dispatch = wechat(token)
       if (err) {
         return sendErrorMsg(res, true);
       }
-      return res.reply('收到! 谢谢您@' + name + '!');
+      return res.reply('收到! 谢谢您 ' + name + ' !');
     });
     return;
   }
@@ -69,19 +70,25 @@ exports.dispatch = wechat(token)
     openId: openId,
     imageUrl: picUrl
   };
+  var ep = eventproxy.create();
   plug.image(params, function (err) {
     if (err) {
       return sendErrorMsg(res, true);
     }
-    return res.reply('收到! 非常感谢!');
+    return ep.emitLater('image', null);
   });
   user.getByOpenId(openId, function (err, row) {
     if (err) {
       return sendErrorMsg(res);
     }
-    if (!row || !row.name) {
-      return res.reply('我们还不知道您是谁, 请输入「@您的名字」告诉我们吧!');
+    return ep.emitLater('user', row && row.name);
+  });
+  ep.all('image', 'user', function (imageRes, hasName) {
+    var msg = '收到! 非常感谢!';
+    if (!hasName) {
+      msg += ' 我们还不知道您是谁, 请输入「@您的名字」告诉我们吧!';
     }
+    return res.reply(msg);
   });
 })
 .middlewarify();
