@@ -44,6 +44,8 @@ exports.dispatch = wechat(token)
   return sendGreeting(res, openId);
 })
 .image(function (message, req, res, next) {
+  console.log('Image message');
+  console.log(message);
   var openId = message.FromUserName || '';
   var picUrl = message.PicUrl || '';
   var params = {
