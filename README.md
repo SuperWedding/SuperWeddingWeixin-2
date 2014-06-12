@@ -1,4 +1,4 @@
 SuperWedding
 ============
 
-http://www.shijihunli.com
+婚礼微信助手
