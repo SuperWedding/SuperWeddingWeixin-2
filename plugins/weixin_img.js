@@ -30,7 +30,7 @@ module.exports = function (params, callback) {
   var ws = fs.createWriteStream(tempFilePath);
   request(imageUrl).pipe(ws);
   ws.on('error', callback);
-  ws.on('finish', function () {
+  ws.on('close', function () {
     uploader(tempFilePath, imageFileName, function (err, result) {
       result = result || {};
       if (err || !result.image) {
