@@ -12,6 +12,7 @@ var config = require('../config');
 var plug = {
   image: require('../plugins/weixin_img')
 };
+var user = require('../proxy/user');
 
 var token = config.weixin.token;
 
@@ -22,6 +23,14 @@ function sendGreeting(res, openId) {
     picurl: 'http://swtest.qiniudn.com/getimgdata.jpeg',
     url: config.serverHost + '/pages/index?openId=' + openId
   }]);
+}
+
+function sendErrorMsg(res, tryAgain) {
+  var msg = '哎呀, 好像出了点问题.';
+  if (tryAgain) {
+    msg += ' 请再发一次.';
+  }
+  res.reply(msg);
 }
 
 exports.dispatch = wechat(token)
@@ -41,6 +50,16 @@ exports.dispatch = wechat(token)
   if (content === 'ping') {
     return res.reply('pong');
   }
+  if (content[0] === '@') {
+    var name = content.split('@')[1].split(' ')[0];
+    user.add(openId, name, function (err) {
+      if (err) {
+        return sendErrorMsg(res, true);
+      }
+      return res.reply('收到! 谢谢您@' + name + '!');
+    });
+    return;
+  }
   return sendGreeting(res, openId);
 })
 .image(function (message, req, res, next) {
@@ -52,9 +71,17 @@ exports.dispatch = wechat(token)
   };
   plug.image(params, function (err) {
     if (err) {
-      return res.reply('哎呀, 好像出了点问题. 请再发一次.');
+      return sendErrorMsg(res, true);
     }
     return res.reply('收到! 非常感谢!');
+  });
+  user.getByOpenId(openId, function (err, row) {
+    if (err) {
+      return sendErrorMsg(res);
+    }
+    if (!row || !row.name) {
+      return res.reply('我们还不知道您是谁, 请输入「@您的名字」告诉我们吧!');
+    }
   });
 })
 .middlewarify();
