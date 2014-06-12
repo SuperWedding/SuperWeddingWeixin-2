@@ -9,6 +9,9 @@
  */
 var wechat = require('wechat');
 var config = require('../config');
+var plug = {
+  image: require('../plugins/weixin_img')
+};
 
 var token = config.weixin.token;
 
@@ -22,9 +25,8 @@ function sendGreeting(res, openId) {
 }
 
 exports.dispatch = wechat(token)
-// When message is a event.
 .event(function (message, req, res, next) {
-  var openId = message.ToUserName || '';
+  var openId = message.FromUserName || '';
   if (message.Event === 'subscribe') {
     return sendGreeting(res, openId);
   }
@@ -33,13 +35,26 @@ exports.dispatch = wechat(token)
   }
   res.reply('尚未支持！');
 })
-// When message is text.
 .text(function (message, req, res, next) {
-  var openId = message.ToUserName || '';
+  var openId = message.FromUserName || '';
   var content = message.Content;
   if (content === 'ping') {
     return res.reply('pong');
   }
   return sendGreeting(res, openId);
+})
+.image(function (message, req, res, next) {
+  var openId = message.FromUserName || '';
+  var picUrl = message.PicUrl || '';
+  var params = {
+    openId: openId,
+    imageUrl: picUrl
+  };
+  plug.image(params, function (err) {
+    if (err) {
+      return res.reply('哎呀, 好像出了点问题. 请再发一次.');
+    }
+    return res.reply('收到! 非常感谢!');
+  });
 })
 .middlewarify();
