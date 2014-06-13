@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>周宁奕 ❤ 余晓瑞</title>
+    <title>周宁奕 ❤ 余晓瑞婚礼邀请函</title>
     <link href="/assets/css/invit.css" rel="stylesheet">
 </head>
 
@@ -11,8 +11,8 @@
 <script src="/assets/js/Weixin.js"></script>
 </script>
 <div id="Infomation">
-    <div id="time" class="timeSmall mainBotton">333333</div>
-    <div id="main" class="mainSmall mainBotton">333333</div>
+    <div id="time" class="timeSmall mainBotton"> </div>
+    <div id="main" class="mainSmall mainBotton"> </div>
     <div id="map" class="mapSmall mainBotton">上海交大闵行校区（东川路）</div>
     <div id="pano" class="panoSmall mainBotton">留园餐厅2楼</div>
     <div id='tel' class="telSmall mainBotton"><a href="tel:18357138841">请联系:周宁奕-18357138841</a></div>
@@ -27,10 +27,13 @@
 </div>
 
     <script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//cdn.staticfile.org/underscore.js/1.6.0/underscore-min.js"></script>
+    <script src="http://zeptojs.com/zepto.js"></script>
+    <!-- <script src="//cdn.staticfile.org/underscore.js/1.6.0/underscore-min.js"></script> -->
     <script src="http://yeshou.qiniudn.com/color.js"></script>
-    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=GCQBZ-KJJRJ-QN6FV-KGXFK-YN7AF-GSFVN"></script>
-
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=GnNUEeOIhgOWtPC1sHGQ1MeTx"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=4pws41U0XAvDgwruv7vDQ695"></script>
+    
+    <script src="/assets/js/BaiduMaker.js"></script>
     <script src="/assets/js/Animation.js"></script>
     <script src="/assets/js/Map.js"></script>
     <script src="/assets/js/Information.js"></script>
@@ -44,12 +47,12 @@
     $('#pass').css('lineHeight', $('#pass').height() + 'px');
     $('#pano').css('lineHeight', $('#pano').height() + 'px');
     $('#map').css('lineHeight', $('#map').height() + 'px');
-    var articles = '2014年6月21日中午11点，周宁奕和余晓瑞在上海交大闵行校区结婚，恭候您的见证';
-    $('#article').text(articles);
 
-
+    // var articles = '2014年6月21日中午11点，周宁奕和余晓瑞在上海交大闵行校区结婚，恭候您的见证';
+    // $('#article').text(articles);
 
     var animation = new Animation($('#broadcast'));
+    // animation.outs();
     var controller = new Controller();
     var information = new Information();
     // animation.broadcastOut();

@@ -1,4 +1,4 @@
-function() {
+(function() {
   var imgUrl = 'http://open-wedding.qiniudn.com/pngbgtitle.jpg';
   var lineLink = 'http://wedding2.keydiary.net/pages/invit';
   var descContent = "6.21中午11点在交大闵行校区等待你们的见证";
@@ -54,6 +54,6 @@ function() {
       shareWeibo();
     });
   }, false);
-}
+})();
 
 var QINIU_DOMAIN = 'http://yeshou.qiniudn.com';

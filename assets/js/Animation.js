@@ -20,7 +20,6 @@
       var sites = '输入地址，遥寄喜糖：'
       // var traffic = '我开车/搭车','我坐公交','我想搭车'
       //验证码 婚礼时间：box
-
     }
 
     Animation.prototype.checkDivs = function(){
