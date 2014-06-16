@@ -75,6 +75,7 @@
         height: 80%;
         overflow: hidden;
         visibility: visible;
+        pointer-events:none;
     }
 
     #pass{
@@ -254,7 +255,7 @@
     }
     .big{
      /*-webkit-animation: animationBig 0.3s linear forwards;*/
-      height: 60%;
+      height:60%;
     }
     .fullScreen{
       position: absolute;
